@@ -1,0 +1,20 @@
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: lawtutor-qdrant
+    restart: unless-stopped
+    volumes:
+      - ./qdrant_storage:/qdrant/storage
+    ports:
+      # 로컬 개발용 포트 노출. 배포 시 제거하고 내부 네트워크만 사용.
+      - "6333:6333"   # REST API
+      - "6334:6334"   # gRPC
+    networks:
+      - lawtutor-net
+
+  # app, cloudflared 서비스는 M3~M4에서 추가 예정
+  # DEPLOYMENT.md 5절 참조
+
+networks:
+  lawtutor-net:
+    driver: bridge

@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# uv
+.uv/
+
+# Environment variables
+.env
+
+# Data (collected from API - large, not for git)
+data/raw/
+data/parsed/
+
+# Qdrant persistent storage
+qdrant_storage/
+
+# BGE-M3 model cache
+bge_m3_cache/
+
+# Cloudflare Tunnel secrets
+cloudflared/cert.pem
+cloudflared/*.json
+
+# Logs
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# mypy
+.mypy_cache/
+
+# ruff
+.ruff_cache/

@@ -1,0 +1,34 @@
+# Force LF line endings for all text files (Windows compatibility)
+* text=auto eol=lf
+
+# Explicit text files
+*.py text eol=lf
+*.toml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.jsonl text eol=lf
+*.txt text eol=lf
+*.cfg text eol=lf
+*.ini text eol=lf
+*.sh text eol=lf
+*.xml text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.env text eol=lf
+Dockerfile text eol=lf
+
+# Windows scripts need CRLF
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.gz binary
+*.zip binary
+*.tar binary
