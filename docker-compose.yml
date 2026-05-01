@@ -5,15 +5,38 @@ services:
     restart: unless-stopped
     volumes:
       - ./qdrant_storage:/qdrant/storage
-    ports:
-      # 로컬 개발용 포트 노출. 배포 시 제거하고 내부 네트워크만 사용.
-      - "6333:6333"   # REST API
-      - "6334:6334"   # gRPC
     networks:
       - lawtutor-net
+    # 프로덕션: 외부 포트 노출 X (app이 내부 네트워크로 접근)
 
-  # app, cloudflared 서비스는 M3~M4에서 추가 예정
-  # DEPLOYMENT.md 5절 참조
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lawtutor-app
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./bge_m3_cache:/home/lawtutor/.cache/huggingface
+      - ./logs:/app/logs
+    depends_on:
+      - qdrant
+    networks:
+      - lawtutor-net
+    # 프로덕션: 외부 포트 노출 X (cloudflared가 내부에서 접근)
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: lawtutor-tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token ${TUNNEL_TOKEN}
+    env_file:
+      - .env
+    depends_on:
+      - app
+    networks:
+      - lawtutor-net
 
 networks:
   lawtutor-net:
