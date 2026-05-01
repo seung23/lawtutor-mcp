@@ -3,7 +3,7 @@
 ## 1. 시스템 전체 구조
 
 ```
-[여자친구분의 디바이스]
+[사용자 디바이스]
    ↓ HTTPS (Claude.ai 웹/앱)
 [Claude.ai 서비스 (Anthropic)]
    ↓ HTTPS (MCP Streamable HTTP)

@@ -344,7 +344,7 @@ Connection registered ... connIndex=0 ... location=ICN
 
 ## 8. Claude.ai에서 연결
 
-승님 본인 + 여자친구분 각자 진행:
+각 사용자별로 진행:
 
 1. https://claude.ai 접속, 로그인
 2. 좌측 하단 프로필 → Settings
@@ -359,7 +359,7 @@ Connection registered ... connIndex=0 ... location=ICN
 8. 테스트 질문: "행정절차법 제21조에 대해 알려줘"
 9. Claude가 `search_law` 또는 `fetch_article_by_number` 도구를 자동 호출하는지 확인
 
-여자친구분에게 공유할 정보:
+다른 사용자에게 공유할 정보:
 - URL: `https://lawtutor.{도메인}/mcp`
 - Bearer Token (안전한 채널로 전달)
 
@@ -519,7 +519,7 @@ PC를 며칠 떠나야 할 때:
 **옵션 B: 잠시 정지**
 - 떠나기 전: `docker compose stop`
 - 돌아와서: `docker compose start`
-- 이 기간 동안 여자친구분이 사용 못 함을 미리 알릴 것
+- 이 기간 동안 사용자가 사용 못 함을 미리 알릴 것
 
 **옵션 C: 원격 데스크톱**
 - TeamViewer, AnyDesk 등으로 원격 제어 환경 미리 셋업
@@ -537,7 +537,7 @@ PC를 며칠 떠나야 할 때:
 - [ ] 라우터 포트포워딩 설정이 없는지 (집 라우터 관리 페이지 확인)
 - [ ] Windows 방화벽이 정상 동작 중인지
 - [ ] Docker Desktop이 최신 버전인지 (보안 패치)
-- [ ] Bearer Token을 여자친구분에게 안전한 채널로 전달했는지 (메신저보다는 비밀번호 관리자 또는 직접 만나서)
+- [ ] Bearer Token을 사용자에게 안전한 채널로 전달했는지 (메신저보다는 비밀번호 관리자 또는 직접 만나서)
 
 ---
 

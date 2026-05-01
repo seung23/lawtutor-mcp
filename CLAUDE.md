@@ -12,7 +12,7 @@ Claude Code는 이 문서의 규칙을 절대 어기지 말 것.
 ### 1.1 왜 MCP 서버인가
 - LLM 추론은 Claude Pro가 담당하므로 별도 LLM API 비용이 발생하지 않는다.
 - 본 서버는 **검색 도구**만 제공. 답변 생성은 Claude Pro 본체가 처리한다.
-- 사용자(여자친구분)는 Claude.ai에서 Custom Connector로 추가하기만 하면 사용 가능.
+- 사용자는 Claude.ai에서 Custom Connector로 추가하기만 하면 사용 가능.
 
 ### 1.2 차별점
 - 검색된 1차 출처(국가법령정보센터)에 근거한 RAG로 범용 LLM의 할루시네이션 차단

@@ -1,6 +1,8 @@
 """FastAPI HTTP 앱.
 
-/health (무인증) + /mcp (Bearer Token 인증 + Rate Limit) 엔드포인트를 제공한다.
+/health + /mcp (Rate Limit) 엔드포인트를 제공한다.
+인증은 Cloudflare Tunnel + WAF에 위임한다.
+Claude.ai Custom Connector는 OAuth만 지원하므로 Bearer Token 미들웨어를 제거했다.
 """
 
 import contextlib
@@ -12,9 +14,7 @@ from slowapi import Limiter
 from slowapi.errors import RateLimitExceeded
 from slowapi.util import get_remote_address
 
-from lawtutor.config import settings
 from lawtutor.constants import MCP_SERVER_NAME, MCP_SERVER_VERSION
-from lawtutor.mcp_server.auth import BearerTokenMiddleware
 from lawtutor.mcp_server.server import mcp
 
 # ---------------------------------------------------------------------------
@@ -59,11 +59,8 @@ def create_app() -> FastAPI:
     app.state.limiter = limiter
     app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
-    # Bearer Token 인증 미들웨어
-    app.add_middleware(BearerTokenMiddleware)
-
     # -----------------------------------------------------------------------
-    # /health — 무인증, 헬스체크
+    # /health — 헬스체크
     # -----------------------------------------------------------------------
     @app.get("/health")
     async def health() -> dict:

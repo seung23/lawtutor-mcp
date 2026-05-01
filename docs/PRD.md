@@ -244,7 +244,7 @@ API 엔드포인트:
 ## 6. 사용자 시나리오 (E2E)
 
 ### 6.1 초기 설정 (1회)
-1. 사용자(여자친구분)가 Claude.ai 접속
+1. 사용자가 Claude.ai 접속
 2. Settings → Connectors → "Add custom connector"
 3. URL 입력: `https://lawtutor.{도메인}/mcp`
 4. Bearer Token 입력 (승님이 발급)
@@ -288,7 +288,7 @@ API 엔드포인트:
 다음을 모두 만족하면 v1 완료로 간주:
 
 1. 사용자(승) 집 PC에 배포되어 Cloudflare Tunnel을 통해 HTTPS로 접근 가능
-2. 여자친구분이 본인 Claude Pro에서 Custom Connector로 추가 성공
+2. 사용자가 본인 Claude Pro에서 Custom Connector로 추가 성공
 3. Claude.ai에서 행정법 질문 시 본 서버의 도구가 자동 호출됨
 4. 자체 평가셋 30문항에서 retrieval recall@5 80% 이상
 5. 검색 결과 메타데이터 무결성 100%

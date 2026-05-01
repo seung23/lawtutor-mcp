@@ -435,7 +435,7 @@ DEPLOYMENT.md 9절 (24/7 안정 운영 설정)을 더 상세히.
 ### 5.6 Claude.ai 연결 사용자 가이드
 
 ```
-README.md 또는 docs/USER_GUIDE.md에 사용자(여자친구분) 연결 가이드.
+README.md 또는 docs/USER_GUIDE.md에 사용자 연결 가이드.
 
 DEPLOYMENT.md 8절 내용을 사용자 친화적으로 재정리:
 - 스크린샷 placeholder

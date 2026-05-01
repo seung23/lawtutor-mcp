@@ -254,7 +254,7 @@
 
 **M4.7 Claude.ai 연결 가이드**
 - README.md 또는 docs/USER_GUIDE.md
-- 여자친구분이 따라할 수 있는 단계별 스크린샷 자리(placeholder)
+- 사용자가 따라할 수 있는 단계별 스크린샷 자리(placeholder)
 
 ### 사용자 결정 필요 사항
 - 도메인 등록업체 (Cloudflare Registrar / 가비아 / 후이즈 등)
@@ -263,7 +263,7 @@
 ### 완료 기준
 - 외부에서 `curl https://lawtutor.{도메인}/health` 200 응답
 - Claude.ai에서 Custom Connector 등록 성공
-- 여자친구분 계정에서도 같은 URL/Token으로 등록 후 사용 가능
+- 다른 계정에서도 같은 URL/Token으로 등록 후 사용 가능
 - PC 재부팅 후 자동 복구 검증 (실제 재부팅 테스트)
 - 인터넷 일시 단절 후 cloudflared 재연결 검증
 - 본인 작업 시 RAM/CPU 충돌 없는지 확인
@@ -320,7 +320,7 @@ M0 → M1 → M2 → M3 → M4
 
 ### 단축 경로 (포트폴리오 우선)
 M0 → M1 → M2 → M3 까지만 만들고 로컬 데모 수준으로 마무리.
-M4(배포)는 여자친구분 실사용 결정 후 진행.
+M4(배포)는 실사용 결정 후 진행.
 이 시점까지만 해도 "MCP 서버 + 도메인 특화 RAG" 포트폴리오로 충분.
 
 ---
