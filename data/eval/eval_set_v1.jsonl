@@ -1,0 +1,10 @@
+{"question": "행정절차법상 처분의 사전통지에 대해 알려줘", "category": "행정법", "difficulty": "하", "tool": "search_law", "expected_articles": ["행정절차법 제21조"], "expected_case_nos": []}
+{"question": "행정절차법 제21조 알려줘", "category": "행정법", "difficulty": "하", "tool": "fetch_article_by_number", "expected_articles": ["행정절차법 제21조"], "expected_case_nos": []}
+{"question": "취소소송의 원고적격에 관한 판례를 검색해줘", "category": "행정법", "difficulty": "중", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": []}
+{"question": "처분성이 인정된 대법원 판례는?", "category": "행정법", "difficulty": "중", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": []}
+{"question": "행정심판법상 재결의 종류에 대해 설명해줘", "category": "행정법", "difficulty": "중", "tool": "search_law", "expected_articles": ["행정심판법 제43조", "행정심판법 제44조"], "expected_case_nos": []}
+{"question": "국가배상법 제2조의 내용을 알려줘", "category": "행정법", "difficulty": "하", "tool": "fetch_article_by_number", "expected_articles": ["국가배상법 제2조"], "expected_case_nos": []}
+{"question": "과잉금지원칙에 관한 헌법재판소 결정례를 검색해줘", "category": "헌법", "difficulty": "중", "tool": "search_constitutional_decision", "expected_articles": [], "expected_case_nos": []}
+{"question": "정보공개법상 비공개대상정보의 범위는?", "category": "행정법", "difficulty": "중", "tool": "search_law", "expected_articles": ["공공기관의 정보공개에 관한 법률 제9조"], "expected_case_nos": []}
+{"question": "행정대집행법의 대집행 절차에 대해 알려줘", "category": "행정법", "difficulty": "중", "tool": "search_law", "expected_articles": ["행정대집행법 제3조"], "expected_case_nos": []}
+{"question": "행정기본법상 제재처분의 제척기간 규정은?", "category": "행정법", "difficulty": "상", "tool": "search_law", "expected_articles": ["행정기본법 제23조"], "expected_case_nos": []}
