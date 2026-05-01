@@ -7,6 +7,7 @@ FastMCP를 사용하여 6개 검색 도구를 제공한다.
 import time
 
 from mcp.server.fastmcp import FastMCP
+from mcp.server.transport_security import TransportSecuritySettings
 
 from lawtutor.constants import MCP_SERVER_NAME, SEARCH_DEFAULT_TOP_K
 from lawtutor.embeddings.bge_m3 import BgeM3Embedder
@@ -30,7 +31,13 @@ def get_retriever() -> Retriever:
 
 
 # FastMCP 인스턴스
-mcp = FastMCP(MCP_SERVER_NAME)
+mcp = FastMCP(
+    MCP_SERVER_NAME,
+    transport_security=TransportSecuritySettings(
+        enable_dns_rebinding_protection=True,
+        allowed_hosts=["lawtutor.dev", "localhost", "127.0.0.1"],
+    ),
+)
 
 
 # ---------------------------------------------------------------------------
