@@ -50,24 +50,24 @@ def search_law(
     law_name_filter: str | None = None,
     include_historical: bool = False,
 ) -> dict:
-    """한국 행정법/헌법 법령 조문을 RAG로 검색합니다.
+    """Search Korean administrative/constitutional law articles and statutes (법령 조문 검색).
 
-    [사용 시점]
-    - 사용자가 특정 법령의 조문 내용을 묻는 경우 ("행정절차법 제21조에 대해")
-    - 법령 개념을 묻는 경우 ("처분의 사전통지란?")
-    - 사례형 적용 질문 ("이 경우 어떤 조문이 적용되나?")
+    Use this tool when the user asks about:
+    - Legal provisions, statutes, or articles (법령, 조문, 법조문)
+    - Legal concepts like "처분", "사전통지", "행정행위", "국가배상", "행정심판"
+    - Which law applies to a specific situation
+    - Comparing provisions across different laws (e.g. 헌법 vs 국가배상법)
 
-    [반환]
-    top_k 개의 조문 청크. 각 청크는 본문 + 메타데이터(법령명, 조문번호, 시행일, 현행 여부 등).
+    Covers: 행정절차법, 행정소송법, 행정심판법, 국가배상법, 행정기본법, 행정대집행법,
+    정보공개법, 질서위반행위규제법, 정부조직법, 대한민국헌법 (+ 시행령/시행규칙)
 
-    [참고]
-    판례 질문에는 search_precedent를, 헌재결정례에는 search_constitutional_decision을 사용하세요.
+    For court cases use search_precedent, for Constitutional Court use search_constitutional_decision.
 
     Args:
-        query: 검색 쿼리
-        top_k: 반환할 결과 수 (기본 5)
-        law_name_filter: 특정 법령명으로 한정 (예: "행정절차법")
-        include_historical: True이면 폐지/개정 조문도 포함 (기본 False)
+        query: Natural language search query (Korean). e.g. "국가배상청구권 요건", "처분의 사전통지"
+        top_k: Number of results to return (default 5)
+        law_name_filter: Filter by specific law name (e.g. "국가배상법", "행정절차법")
+        include_historical: If True, include repealed/amended articles (default False)
     """
     start = time.time()
     retriever = get_retriever()
@@ -91,20 +91,23 @@ def search_precedent(
     top_k: int = SEARCH_DEFAULT_TOP_K,
     court_filter: str | None = None,
 ) -> dict:
-    """한국 행정법 관련 대법원 판례를 검색합니다.
+    """Search Korean Supreme Court precedents / case law on administrative law (판례 검색).
 
-    [사용 시점]
-    - 판례 질문 ("처분성이 인정된 판례는?")
-    - 판례 비교 질문 ("X판례와 Y판례의 차이는?")
-    - 사례 적용 질문 ("이 경우 관련 판례가 있나?")
+    Use this tool when the user asks about:
+    - Court cases, precedents, rulings, judgments (판례, 판결, 대법원)
+    - Legal principles established by courts (판시사항, 판결요지)
+    - Case-based legal analysis ("이 경우 관련 판례가 있나?")
+    - Comparing court decisions
+    - Specific legal issues like 국가배상, 처분성, 행정소송, 공무원 책임
+    - Real-world legal scenarios that need case law support
 
-    [반환]
-    top_k 개의 판례 청크. 각 청크는 판시사항/판결요지/이유 중 하나 + 메타데이터(사건번호, 법원, 선고일 등).
+    Returns case chunks with: 판시사항 (holdings), 판결요지 (summary), 이유 (reasoning),
+    plus metadata (사건번호, 법원, 선고일).
 
     Args:
-        query: 검색 쿼리
-        top_k: 반환할 결과 수 (기본 5)
-        court_filter: 법원명 필터 (예: "대법원")
+        query: Natural language search query (Korean). e.g. "국가배상 군인연금 사망보상금", "공무원 자가용 직무수행 배상책임"
+        top_k: Number of results to return (default 5)
+        court_filter: Filter by court name (e.g. "대법원")
     """
     start = time.time()
     retriever = get_retriever()
@@ -126,20 +129,20 @@ def search_constitutional_decision(
     top_k: int = SEARCH_DEFAULT_TOP_K,
     case_type_filter: str | None = None,
 ) -> dict:
-    """헌법재판소 결정례를 검색합니다.
+    """Search Korean Constitutional Court decisions (헌법재판소 결정례 검색).
 
-    [사용 시점]
-    - 헌법 질문 ("기본권 침해 여부 판단 기준은?")
-    - 위헌/합헌 여부 질문
-    - 기본권 사건 검색
+    Use this tool when the user asks about:
+    - Constitutional Court decisions (헌재결정, 헌법재판소)
+    - Constitutionality reviews (위헌, 합헌, 헌법불합치)
+    - Fundamental rights (기본권) issues
+    - Constitutional complaints (헌법소원)
 
-    [반환]
-    top_k 개의 결정례 청크. 각 청크는 판시사항/결정요지/전문 중 하나 + 메타데이터.
+    Returns decision chunks with: 판시사항, 결정요지, 전문 + metadata.
 
     Args:
-        query: 검색 쿼리
-        top_k: 반환할 결과 수 (기본 5)
-        case_type_filter: 사건종류 필터 (예: "헌마", "헌바")
+        query: Natural language search query (Korean). e.g. "기본권 침해 판단 기준", "위헌심사 비례원칙"
+        top_k: Number of results to return (default 5)
+        case_type_filter: Case type filter (e.g. "헌마", "헌바", "헌가")
     """
     start = time.time()
     retriever = get_retriever()
@@ -160,18 +163,18 @@ def search_legal_interpretation(
     query: str,
     top_k: int = SEARCH_DEFAULT_TOP_K,
 ) -> dict:
-    """정부 부처(법제처)의 법령 유권해석례를 검색합니다.
+    """Search official legal interpretations by the Ministry of Government Legislation (법제처 유권해석례 검색).
 
-    [사용 시점]
-    - 행정 실무 해석 질문 ("이 조문의 실무 적용은?")
-    - 법령 적용이 모호한 영역의 질문
+    Use this tool when the user asks about:
+    - Practical application of legal provisions (실무 적용, 유권해석)
+    - Ambiguous legal provisions that need authoritative interpretation
+    - How government agencies should apply specific laws
 
-    [반환]
-    top_k 개의 해석례 청크. 각 청크는 질의요지/회답/이유 + 메타데이터.
+    Returns interpretation chunks with: 질의요지, 회답, 이유 + metadata.
 
     Args:
-        query: 검색 쿼리
-        top_k: 반환할 결과 수 (기본 5)
+        query: Natural language search query (Korean). e.g. "행정절차법 처분 사전통지 실무 적용"
+        top_k: Number of results to return (default 5)
     """
     start = time.time()
     retriever = get_retriever()
@@ -187,18 +190,18 @@ def fetch_article_by_number(
     law_name: str,
     article_no: str,
 ) -> dict:
-    """법령명과 조문번호로 정확한 조문을 직접 조회합니다.
+    """Fetch exact law article by law name and article number (조문번호로 정확한 조문 직접 조회).
 
-    [사용 시점]
-    - 사용자가 조문번호를 알고 있을 때 ("행정절차법 제21조 알려줘")
-    - 정확한 조문 원문이 필요할 때
+    Use this tool when:
+    - The user specifies an exact article number: "행정절차법 제21조", "국가배상법 제2조", "헌법 제29조"
+    - You need the full original text of a specific provision
+    - Comparing specific articles across different laws
 
-    [반환]
-    해당 조문 청크 또는 빈 결과.
+    This is a direct lookup (no vector search), so it's fast and precise.
 
     Args:
-        law_name: 법령명 (예: "행정절차법")
-        article_no: 조문번호 (예: "21")
+        law_name: Name of the law (e.g. "행정절차법", "국가배상법", "대한민국헌법")
+        article_no: Article number as string (e.g. "21", "2", "29")
     """
     start = time.time()
     retriever = get_retriever()
@@ -216,17 +219,18 @@ def fetch_article_by_number(
 def fetch_case_by_number(
     case_no: str,
 ) -> dict:
-    """사건번호로 정확한 판례 또는 헌재결정례를 직접 조회합니다.
+    """Fetch exact court case by case number (사건번호로 판례/헌재결정례 직접 조회).
 
-    [사용 시점]
-    - 사용자가 사건번호를 알고 있을 때 ("2018두12345 판결 알려줘")
-    - 정확한 판례/결정례 원문이 필요할 때
+    Use this tool when:
+    - The user specifies a case number: "95다38677", "2018두12345", "2018헌마123"
+    - You need the full text of a specific court decision
+    - Any reference to a Korean case number format (YY/YYYY + 다/두/헌마/헌바/헌가 + digits)
 
-    [반환]
-    해당 사건의 모든 청크(판시사항, 판결요지, 이유 등) 또는 빈 결과.
+    This is a direct lookup (no vector search). Searches both Supreme Court precedents
+    and Constitutional Court decisions.
 
     Args:
-        case_no: 사건번호 (예: "2018두12345" 또는 "2018헌마123")
+        case_no: Korean case number (e.g. "95다38677", "2018두12345", "2018헌마123")
     """
     start = time.time()
     retriever = get_retriever()

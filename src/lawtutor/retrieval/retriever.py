@@ -171,6 +171,8 @@ class Retriever:
     def fetch_by_case_no(self, case_no: str) -> list[dict]:
         """사건번호로 판례/결정례를 조회한다.
 
+        DB에서 먼저 검색하고, 없으면 국가법령정보센터 API에서 실시간 조회한다.
+
         Args:
             case_no: 사건번호 (예: 2018두12345 또는 2018헌마123)
 
@@ -179,7 +181,7 @@ class Retriever:
         """
         from qdrant_client.models import Filter, FieldCondition, MatchValue
 
-        # 판례 컬렉션에서 검색
+        # 1차: DB에서 검색
         for collection in [COLLECTION_PRECEDENTS, COLLECTION_DECISIONS]:
             query_filter = Filter(must=[
                 FieldCondition(key="case_no", match=MatchValue(value=case_no)),
@@ -200,4 +202,7 @@ class Retriever:
             except Exception:
                 continue
 
-        return []
+        # 2차: DB에 없으면 API 폴백
+        logger.info("db_miss_trying_api_fallback", case_no=case_no)
+        from lawtutor.retrieval.api_fallback import fetch_case_from_api
+        return fetch_case_from_api(case_no)
