@@ -63,7 +63,12 @@ class Retriever:
         if law_name_filter:
             filters["law_name"] = law_name_filter
 
-        return self.store.search(COLLECTION_LAWS, vector, limit=top_k, filters=filters or None)
+        results = self.store.search(COLLECTION_LAWS, vector, limit=top_k, filters=filters or None)
+        if not results:
+            logger.info("db_miss_trying_api_fallback", query=query, collection="laws")
+            from lawtutor.retrieval.api_fallback import search_laws_from_api
+            return search_laws_from_api(query, top_k, law_name_filter)
+        return results
 
     def search_precedents(
         self,
@@ -88,7 +93,12 @@ class Retriever:
         if court_filter:
             filters["court"] = court_filter
 
-        return self.store.search(COLLECTION_PRECEDENTS, vector, limit=top_k, filters=filters or None)
+        results = self.store.search(COLLECTION_PRECEDENTS, vector, limit=top_k, filters=filters or None)
+        if not results:
+            logger.info("db_miss_trying_api_fallback", query=query, collection="precedents")
+            from lawtutor.retrieval.api_fallback import search_precedents_from_api
+            return search_precedents_from_api(query, top_k)
+        return results
 
     def search_decisions(
         self,
@@ -113,7 +123,12 @@ class Retriever:
         if case_type_filter:
             filters["case_type"] = case_type_filter
 
-        return self.store.search(COLLECTION_DECISIONS, vector, limit=top_k, filters=filters or None)
+        results = self.store.search(COLLECTION_DECISIONS, vector, limit=top_k, filters=filters or None)
+        if not results:
+            logger.info("db_miss_trying_api_fallback", query=query, collection="decisions")
+            from lawtutor.retrieval.api_fallback import search_decisions_from_api
+            return search_decisions_from_api(query, top_k)
+        return results
 
     def search_interpretations(
         self,
@@ -131,7 +146,12 @@ class Retriever:
         """
         top_k = self._clamp_top_k(top_k)
         vector = self.embedder.embed_query(query)
-        return self.store.search(COLLECTION_INTERPRETATIONS, vector, limit=top_k)
+        results = self.store.search(COLLECTION_INTERPRETATIONS, vector, limit=top_k)
+        if not results:
+            logger.info("db_miss_trying_api_fallback", query=query, collection="interpretations")
+            from lawtutor.retrieval.api_fallback import search_interpretations_from_api
+            return search_interpretations_from_api(query, top_k)
+        return results
 
     def fetch_by_article(
         self,
@@ -163,10 +183,17 @@ class Retriever:
             with_payload=True,
         )
 
-        return [
+        db_results = [
             {"payload": dict(point.payload), "score": 1.0}
             for point in results[0]
         ]
+
+        if not db_results:
+            logger.info("db_miss_trying_api_fallback", law_name=law_name, article_no=article_no)
+            from lawtutor.retrieval.api_fallback import fetch_article_from_api
+            return fetch_article_from_api(law_name, article_no)
+
+        return db_results
 
     def fetch_by_case_no(self, case_no: str) -> list[dict]:
         """사건번호로 판례/결정례를 조회한다.
