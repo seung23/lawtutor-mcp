@@ -11,6 +11,8 @@ COLLECTION_PAYLOAD_INDEXES: dict[str, dict[str, PayloadSchemaType]] = {
         "is_active": PayloadSchemaType.BOOL,
         "source_type": PayloadSchemaType.KEYWORD,
         "law_name": PayloadSchemaType.KEYWORD,
+        "article_title": PayloadSchemaType.KEYWORD,
+        "article_no": PayloadSchemaType.KEYWORD,
         "effective_date": PayloadSchemaType.KEYWORD,
     },
     "precedents": {

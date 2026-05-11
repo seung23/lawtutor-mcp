@@ -1,6 +1,7 @@
 """Qdrant 벡터 DB 클라이언트.
 
 컬렉션 생성, payload index 등록, upsert, 검색 기능을 제공한다.
+dense + sparse 하이브리드 검색을 지원한다.
 """
 
 import structlog
@@ -9,9 +10,14 @@ from qdrant_client.models import (
     Distance,
     PointStruct,
     VectorParams,
+    SparseVectorParams,
+    SparseVector,
     Filter,
     FieldCondition,
     MatchValue,
+    Prefetch,
+    FusionQuery,
+    Fusion,
 )
 
 from lawtutor.config import settings
@@ -23,6 +29,9 @@ logger = structlog.get_logger()
 
 # upsert 배치 크기
 UPSERT_BATCH_SIZE = 100
+
+# 하이브리드 검색 시 prefetch 배수 (dense/sparse 각각 limit * 이 값만큼 후보 가져옴)
+HYBRID_PREFETCH_MULTIPLIER = 4
 
 
 class VectorStore:
@@ -38,7 +47,7 @@ class VectorStore:
         logger.info("qdrant_connected", host=settings.qdrant_host, port=settings.qdrant_port)
 
     def create_collection(self, name: str, recreate: bool = False) -> None:
-        """컬렉션을 생성한다.
+        """컬렉션을 생성한다 (dense + sparse named vectors).
 
         Args:
             name: 컬렉션 이름
@@ -51,10 +60,15 @@ class VectorStore:
         if not self._client.collection_exists(name):
             self._client.create_collection(
                 collection_name=name,
-                vectors_config=VectorParams(
-                    size=BGE_M3_VECTOR_DIM,
-                    distance=Distance.COSINE,
-                ),
+                vectors_config={
+                    "dense": VectorParams(
+                        size=BGE_M3_VECTOR_DIM,
+                        distance=Distance.COSINE,
+                    ),
+                },
+                sparse_vectors_config={
+                    "sparse": SparseVectorParams(),
+                },
             )
             logger.info("collection_created", name=name)
 
@@ -78,28 +92,42 @@ class VectorStore:
             self.create_collection(name, recreate=recreate)
 
     def upsert_chunks(
-        self, collection_name: str, chunks: list[Chunk], vectors: list[list[float]]
+        self,
+        collection_name: str,
+        chunks: list[Chunk],
+        dense_vectors: list[list[float]],
+        sparse_vectors: list[dict[int, float]],
+        id_offset: int = 0,
     ) -> None:
-        """청크와 벡터를 컬렉션에 upsert한다.
+        """청크와 벡터(dense + sparse)를 컬렉션에 upsert한다.
 
         Args:
             collection_name: 컬렉션 이름
             chunks: 청크 리스트
-            vectors: 임베딩 벡터 리스트 (chunks와 동일 순서)
+            dense_vectors: dense 임베딩 벡터 리스트
+            sparse_vectors: sparse lexical weight 리스트
+            id_offset: point ID 시작 오프셋 (배치 처리 시 중복 방지)
         """
-        points = [
-            PointStruct(
-                id=idx,
-                vector=vector,
+        points = []
+        for idx, (chunk, dense_vec, sparse_weights) in enumerate(
+            zip(chunks, dense_vectors, sparse_vectors)
+        ):
+            indices = [int(k) for k in sparse_weights.keys()]
+            values = list(sparse_weights.values())
+
+            points.append(PointStruct(
+                id=id_offset + idx,
+                vector={
+                    "dense": dense_vec,
+                    "sparse": SparseVector(indices=indices, values=values),
+                },
                 payload={
                     "chunk_id": chunk.chunk_id,
                     "text": chunk.text,
                     "chunk_type": chunk.chunk_type,
                     **chunk.metadata,
                 },
-            )
-            for idx, (chunk, vector) in enumerate(zip(chunks, vectors))
-        ]
+            ))
 
         # 배치 upsert
         for i in range(0, len(points), UPSERT_BATCH_SIZE):
@@ -114,14 +142,19 @@ class VectorStore:
         query_vector: list[float],
         limit: int = 5,
         filters: dict | None = None,
+        sparse_vector: dict[int, float] | None = None,
     ) -> list[dict]:
-        """벡터 유사도 검색을 수행한다.
+        """하이브리드 검색을 수행한다 (dense + sparse RRF fusion).
+
+        sparse_vector가 제공되면 dense/sparse 각각 검색 후 RRF로 융합한다.
+        제공되지 않으면 dense만으로 검색한다.
 
         Args:
             collection_name: 컬렉션 이름
-            query_vector: 쿼리 임베딩 벡터
+            query_vector: dense 쿼리 벡터
             limit: 반환할 결과 수
-            filters: 필터 조건 딕셔너리 (예: {"is_active": True})
+            filters: 필터 조건 딕셔너리
+            sparse_vector: sparse 쿼리 벡터 (없으면 dense-only)
 
         Returns:
             검색 결과 리스트 (payload + score)
@@ -134,13 +167,45 @@ class VectorStore:
             ]
             query_filter = Filter(must=conditions)
 
-        results = self._client.query_points(
-            collection_name=collection_name,
-            query=query_vector,
-            limit=limit,
-            query_filter=query_filter,
-            with_payload=True,
-        )
+        if sparse_vector:
+            # 하이브리드: dense + sparse → RRF fusion
+            sparse_indices = [int(k) for k in sparse_vector.keys()]
+            sparse_values = list(sparse_vector.values())
+            prefetch_limit = limit * HYBRID_PREFETCH_MULTIPLIER
+
+            results = self._client.query_points(
+                collection_name=collection_name,
+                prefetch=[
+                    Prefetch(
+                        query=query_vector,
+                        using="dense",
+                        limit=prefetch_limit,
+                        filter=query_filter,
+                    ),
+                    Prefetch(
+                        query=SparseVector(
+                            indices=sparse_indices,
+                            values=sparse_values,
+                        ),
+                        using="sparse",
+                        limit=prefetch_limit,
+                        filter=query_filter,
+                    ),
+                ],
+                query=FusionQuery(fusion=Fusion.RRF),
+                limit=limit,
+                with_payload=True,
+            )
+        else:
+            # dense-only 폴백
+            results = self._client.query_points(
+                collection_name=collection_name,
+                query=query_vector,
+                using="dense",
+                limit=limit,
+                query_filter=query_filter,
+                with_payload=True,
+            )
 
         return [
             {

@@ -422,7 +422,7 @@ docker compose logs --tail=100 cloudflared
 ### 업데이트 배포
 코드 수정 후:
 ```bash
-cd C:\Users\{사용자명}\projects\lawtutor-mcp
+cd C:\Users\{사용자명}\projects\lawtur-mcp
 git pull
 docker compose build app
 docker compose up -d app

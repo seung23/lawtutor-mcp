@@ -112,8 +112,14 @@ COLLECTION_LOADERS = {
 }
 
 
+INDEX_BATCH_SIZE = 5000
+
+
 def index_collection(collection_name: str, recreate: bool = False) -> None:
-    """컬렉션을 인덱싱한다."""
+    """컬렉션을 인덱싱한다 (dense + sparse 하이브리드).
+
+    메모리 절약을 위해 INDEX_BATCH_SIZE 단위로 임베딩 → upsert를 반복한다.
+    """
     from lawtutor.embeddings.bge_m3 import BgeM3Embedder
     from lawtutor.vector_store.client import VectorStore
 
@@ -126,18 +132,29 @@ def index_collection(collection_name: str, recreate: bool = False) -> None:
 
     logger.info("total_chunks", collection=collection_name, count=len(chunks))
 
-    # 2. 임베딩
+    # 2. 컬렉션 생성
     embedder = BgeM3Embedder()
-    texts = [c.text for c in chunks]
-
-    logger.info("embedding_start", count=len(texts))
-    vectors = embedder.embed(texts)
-    logger.info("embedding_done", count=len(vectors))
-
-    # 3. Qdrant upsert
     store = VectorStore()
     store.create_collection(collection_name, recreate=recreate)
-    store.upsert_chunks(collection_name, chunks, vectors)
+
+    # 3. 배치 단위로 임베딩 → upsert (메모리 절약)
+    total = len(chunks)
+    upserted = 0
+
+    for batch_start in range(0, total, INDEX_BATCH_SIZE):
+        batch_end = min(batch_start + INDEX_BATCH_SIZE, total)
+        batch_chunks = chunks[batch_start:batch_end]
+        batch_texts = [c.text for c in batch_chunks]
+
+        logger.info("batch_embedding", batch=f"{batch_start}-{batch_end}", total=total)
+        hybrid = embedder.embed_hybrid(batch_texts)
+
+        store.upsert_chunks(
+            collection_name, batch_chunks, hybrid.dense, hybrid.sparse,
+            id_offset=batch_start,
+        )
+        upserted += len(batch_chunks)
+        logger.info("batch_upserted", upserted=upserted, total=total)
 
     info = store.get_collection_info(collection_name)
     logger.info("indexing_complete", **info)

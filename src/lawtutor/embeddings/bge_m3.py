@@ -2,7 +2,10 @@
 
 한국어 성능이 우수한 BAAI/bge-m3 모델을 사용한다.
 CPU/GPU 자동 감지, 배치 처리를 지원한다.
+dense + sparse(lexical) 하이브리드 벡터를 지원한다.
 """
+
+from dataclasses import dataclass
 
 import structlog
 
@@ -14,6 +17,14 @@ logger = structlog.get_logger()
 
 # BGE-M3 임베딩 배치 크기
 EMBED_BATCH_SIZE = 32
+
+
+@dataclass
+class HybridVectors:
+    """dense + sparse 벡터 쌍."""
+
+    dense: list[list[float]]
+    sparse: list[dict[int, float]]
 
 
 class BgeM3Embedder(BaseEmbedder):
@@ -40,7 +51,7 @@ class BgeM3Embedder(BaseEmbedder):
         return BGE_M3_VECTOR_DIM
 
     def embed(self, texts: list[str]) -> list[list[float]]:
-        """텍스트 리스트를 배치로 임베딩한다.
+        """텍스트 리스트를 배치로 임베딩한다 (dense only, 하위호환).
 
         Args:
             texts: 임베딩할 텍스트 리스트
@@ -56,11 +67,33 @@ class BgeM3Embedder(BaseEmbedder):
             batch_size=EMBED_BATCH_SIZE,
             max_length=8192,
         )
-        # dense_vecs는 numpy array
         return result["dense_vecs"].tolist()
 
+    def embed_hybrid(self, texts: list[str]) -> HybridVectors:
+        """텍스트 리스트를 dense + sparse로 임베딩한다.
+
+        Args:
+            texts: 임베딩할 텍스트 리스트
+
+        Returns:
+            HybridVectors (dense 벡터 + sparse lexical weights)
+        """
+        if not texts:
+            return HybridVectors(dense=[], sparse=[])
+
+        result = self._model.encode(
+            texts,
+            batch_size=EMBED_BATCH_SIZE,
+            max_length=8192,
+            return_sparse=True,
+        )
+        return HybridVectors(
+            dense=result["dense_vecs"].tolist(),
+            sparse=result["lexical_weights"],
+        )
+
     def embed_query(self, query: str) -> list[float]:
-        """단일 쿼리를 임베딩한다.
+        """단일 쿼리를 dense 임베딩한다.
 
         Args:
             query: 검색 쿼리
@@ -70,3 +103,15 @@ class BgeM3Embedder(BaseEmbedder):
         """
         vectors = self.embed([query])
         return vectors[0]
+
+    def embed_query_hybrid(self, query: str) -> tuple[list[float], dict[int, float]]:
+        """단일 쿼리를 dense + sparse로 임베딩한다.
+
+        Args:
+            query: 검색 쿼리
+
+        Returns:
+            (dense 벡터, sparse lexical weights) 튜플
+        """
+        hybrid = self.embed_hybrid([query])
+        return hybrid.dense[0], hybrid.sparse[0]
