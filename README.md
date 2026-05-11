@@ -8,8 +8,8 @@
 
 - **할루시네이션 차단**: 국가법령정보센터 OPEN API 단일 소스 기반 RAG
 - **현행 법령 우선**: 시행일자 메타데이터 기반 `is_active` 필터링
-- **검색만 제공, 추론은 클라이언트에 위임**: MCP 서버는 도구만 노출, LLM 추론은 Claude Pro가 담당
-- **셀프 호스팅**: 집 PC + Docker + Cloudflare Tunnel (월 운영비 ~1만원)
+- **검색만 제공, 추론은 클라이언트에 위임**: MCP 서버는 도구만 노출, LLM 추론은 Claude가 담당
+- **셀프 호스팅**: 집 PC + Docker + Cloudflare Tunnel
 
 ## 아키텍처
 
