@@ -10,8 +10,8 @@
 - **하이브리드 검색**: BGE-M3 dense(1024차원) + sparse(lexical) 벡터를 RRF(Reciprocal Rank Fusion)로 융합
 - **리랭킹**: 법률 용어 동의어 확장 + N-gram 타이틀 부스트로 법령 검색 정확도 향상
 - **현행 법령 우선**: 시행일자 메타데이터 기반 `is_active` 필터링
-- **검색만 제공, 추론은 클라이언트에 위임**: MCP 서버는 도구만 노출, LLM 추론은 Claude Pro가 담당
-- **셀프 호스팅**: 집 PC + Docker + Cloudflare Tunnel (월 운영비 ~1만원)
+- **검색만 제공, 추론은 클라이언트에 위임**: MCP 서버는 도구만 노출, LLM 추론은 Claude가 담당
+- **셀프 호스팅**: 집 PC + Docker + Cloudflare Tunnel
 
 ## 데이터 규모
 
