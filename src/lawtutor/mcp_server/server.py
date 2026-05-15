@@ -50,28 +50,34 @@ def search_law(
     law_name_filter: str | None = None,
     include_historical: bool = False,
 ) -> dict:
-    """Search Korean law articles and statutes by semantic similarity (법령 조문 검색).
+    """Search ANY Korean law article by semantic similarity (대한민국 모든 법령 조문 검색).
+
+    This tool searches a database of ALL 5,500+ Korean laws, presidential decrees, and
+    ministerial rules currently in force. It is NOT limited to administrative law —
+    it covers every law in the Korean legal system.
 
     USE THIS TOOL WHEN the user:
-    - Asks about any legal provision, statute, or article (법령, 조문, 법조문, 규정)
-    - Asks whether a specific legal principle is codified ("~에 대한 규정이 있나요?", "~을 명시한 조문")
-    - Asks about legal concepts: 처분, 사전통지, 행정행위, 국가배상, 행정심판, 신뢰보호, 비례원칙, 부당결부금지, 평등원칙, 재량권, 기속행위, 공정력, 부관, 행정계획, 확약, 행정지도
-    - Wants to know which law governs a situation ("이 경우 어떤 법이 적용되나요?")
-    - Asks about requirements/요건, effects/효과, or exceptions/예외 of a legal provision
+    - Asks about ANY legal provision, statute, article, or regulation (법령, 조문, 규정, 법조문)
+    - Asks whether something is codified in law ("~에 대한 규정이 있나요?", "법에 ~가 있나요?")
+    - Asks about ANY legal concept, term, or institution (공무원, 처분, 계약, 허가, 면허, 자격 등)
+    - Asks what law applies to a situation ("이 경우 어떤 법이 적용되나요?")
+    - Asks about requirements/요건, effects/효과, definitions/정의, or exceptions/예외
+    - Asks "~의 근거 규정", "~의 법적 근거", "~이 뭐야?" (if it could be defined in law)
+    - Asks about any Korean government institution, public official role, or legal status
     - Compares provisions across different laws
-    - Asks "~의 근거 규정", "~의 법적 근거", "법에 ~가 있나요?"
 
-    Covers ALL Korean laws including: 행정기본법, 행정절차법, 행정소송법, 행정심판법, 국가배상법,
-    행정대집행법, 정보공개법, 질서위반행위규제법, 정부조직법, 대한민국헌법, 국가공무원법,
-    지방자치법, 민법, 형법, 각종 시행령/시행규칙 등 5,500+ 법령
+    Coverage includes but is NOT limited to: 행정기본법, 행정절차법, 행정소송법, 행정심판법,
+    국가배상법, 국가공무원법, 지방공무원법, 지방자치법, 대한민국헌법, 민법, 형법, 상법,
+    민사소송법, 형사소송법, 정보공개법, 질서위반행위규제법, 정부조직법, 행정대집행법,
+    각종 특별법, 시행령, 시행규칙 등 5,500+ 법령 전체.
 
     IMPORTANT: When uncertain whether a question needs law search or case search, use BOTH this tool
     AND search_precedent. Legal questions often require both statutory text and case law.
 
     Args:
-        query: Natural language search query (Korean). e.g. "신뢰보호원칙 명시 규정", "국가배상 요건", "처분의 사전통지 의무"
+        query: Natural language search query (Korean). e.g. "전문경력관 임용", "신뢰보호원칙", "국가배상 요건"
         top_k: Number of results to return (default 5, increase to 10 for broad concepts)
-        law_name_filter: Filter by specific law name (e.g. "행정기본법", "국가배상법"). Use when the user mentions a specific law.
+        law_name_filter: Filter by specific law name (e.g. "국가공무원법", "행정기본법"). Use when the user mentions a specific law.
         include_historical: If True, include repealed/amended articles (default False)
     """
     start = time.time()
