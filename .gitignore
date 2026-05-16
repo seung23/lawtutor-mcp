@@ -45,6 +45,10 @@ logs/
 *.swo
 *~
 
+# Documentation (auto-generated)
+docs/HOW_IT_WORKS.md
+docs/CODE_DEEP_DIVE.md
+
 # OS
 .DS_Store
 Thumbs.db
