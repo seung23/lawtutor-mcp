@@ -1,0 +1,102 @@
+{"question": "행정절차법상 처분의 사전통지에 대해 알려줘", "category": "행정법", "difficulty": "하", "tool": "search_law", "expected_articles": ["행정절차법 제21조"], "expected_case_nos": []}
+{"question": "행정절차법에서 처분의 이유를 제시해야 하는 규정은?", "category": "행정법", "difficulty": "하", "tool": "search_law", "expected_articles": ["행정절차법 제23조"], "expected_case_nos": []}
+{"question": "행정절차법상 의견제출에 대한 규정", "category": "행정법", "difficulty": "하", "tool": "search_law", "expected_articles": ["행정절차법 제27조"], "expected_case_nos": []}
+{"question": "행정절차법상 청문 주재자에 관한 규정", "category": "행정법", "difficulty": "중", "tool": "search_law", "expected_articles": ["행정절차법 제28조"], "expected_case_nos": []}
+{"question": "행정절차법상 송달의 규정을 알려줘", "category": "행정법", "difficulty": "중", "tool": "search_law", "expected_articles": ["행정절차법 제14조"], "expected_case_nos": []}
+{"question": "행정절차법에서 처분의 신청 절차는?", "category": "행정법", "difficulty": "중", "tool": "search_law", "expected_articles": ["행정절차법 제17조"], "expected_case_nos": []}
+{"question": "행정절차법에서 의견청취의 방법에는 무엇이 있는지", "category": "행정법", "difficulty": "중", "tool": "search_law", "expected_articles": ["행정절차법 제22조"], "expected_case_nos": []}
+{"question": "행정절차법상 행정지도의 원칙에 대해 알려줘", "category": "행정법", "difficulty": "중", "tool": "search_law", "expected_articles": ["행정절차법 제48조"], "expected_case_nos": []}
+{"question": "행정절차법상 신의성실 및 신뢰보호 원칙 규정", "category": "행정법", "difficulty": "중", "tool": "search_law", "expected_articles": ["행정절차법 제4조"], "expected_case_nos": []}
+{"question": "행정절차법의 적용 범위는 어떻게 되나요?", "category": "행정법", "difficulty": "중", "tool": "search_law", "expected_articles": ["행정절차법 제3조"], "expected_case_nos": []}
+{"question": "행정절차법상 처분의 방식에 관한 규정", "category": "행정법", "difficulty": "중", "tool": "search_law", "expected_articles": ["행정절차법 제24조"], "expected_case_nos": []}
+{"question": "행정절차법상 행정상 입법예고에 대해 알려줘", "category": "행정법", "difficulty": "상", "tool": "search_law", "expected_articles": ["행정절차법 제41조"], "expected_case_nos": []}
+{"question": "행정심판의 종류에는 무엇이 있나요?", "category": "행정법", "difficulty": "하", "tool": "search_law", "expected_articles": ["행정심판법 제5조"], "expected_case_nos": []}
+{"question": "행정심판법상 재결의 종류에 대해 설명해줘", "category": "행정법", "difficulty": "상", "tool": "search_law", "expected_articles": ["행정심판법 제43조"], "expected_case_nos": []}
+{"question": "행정심판법상 사정재결이란 무엇인가요?", "category": "행정법", "difficulty": "상", "tool": "search_law", "expected_articles": ["행정심판법 제44조"], "expected_case_nos": []}
+{"question": "행정심판법상 집행정지에 관한 규정", "category": "행정법", "difficulty": "중", "tool": "search_law", "expected_articles": ["행정심판법 제30조"], "expected_case_nos": []}
+{"question": "행정심판법상 임시처분 규정을 알려줘", "category": "행정법", "difficulty": "상", "tool": "search_law", "expected_articles": ["행정심판법 제31조"], "expected_case_nos": []}
+{"question": "행정심판법상 재결의 기속력에 관한 규정", "category": "행정법", "difficulty": "상", "tool": "search_law", "expected_articles": ["행정심판법 제49조"], "expected_case_nos": []}
+{"question": "행정심판법상 청구인 적격에 대해 알려줘", "category": "행정법", "difficulty": "중", "tool": "search_law", "expected_articles": ["행정심판법 제13조"], "expected_case_nos": []}
+{"question": "행정심판 청구의 기간은 어떻게 되나요?", "category": "행정법", "difficulty": "중", "tool": "search_law", "expected_articles": ["행정심판법 제27조"], "expected_case_nos": []}
+{"question": "행정심판의 고지 의무에 대한 규정", "category": "행정법", "difficulty": "상", "tool": "search_law", "expected_articles": ["행정심판법 제58조"], "expected_case_nos": []}
+{"question": "헌법상 국민의 기본권 제한 요건은?", "category": "헌법", "difficulty": "중", "tool": "search_law", "expected_articles": ["대한민국헌법 제37조"], "expected_case_nos": []}
+{"question": "헌법상 직업의 자유에 관한 규정", "category": "헌법", "difficulty": "하", "tool": "search_law", "expected_articles": ["대한민국헌법 제15조"], "expected_case_nos": []}
+{"question": "헌법상 재산권 보장에 관한 규정은?", "category": "헌법", "difficulty": "하", "tool": "search_law", "expected_articles": ["대한민국헌법 제23조"], "expected_case_nos": []}
+{"question": "헌법상 신체의 자유에 대한 규정", "category": "헌법", "difficulty": "중", "tool": "search_law", "expected_articles": ["대한민국헌법 제12조"], "expected_case_nos": []}
+{"question": "헌법상 평등의 원칙에 관한 규정", "category": "헌법", "difficulty": "중", "tool": "search_law", "expected_articles": ["대한민국헌법 제11조"], "expected_case_nos": []}
+{"question": "헌법상 국가배상청구권에 관한 규정은?", "category": "헌법", "difficulty": "상", "tool": "search_law", "expected_articles": ["대한민국헌법 제29조"], "expected_case_nos": []}
+{"question": "헌법재판소의 권한에 대해 알려줘", "category": "헌법", "difficulty": "중", "tool": "search_law", "expected_articles": ["대한민국헌법 제111조"], "expected_case_nos": []}
+{"question": "헌법상 인간의 존엄과 가치에 관한 규정", "category": "헌법", "difficulty": "하", "tool": "search_law", "expected_articles": ["대한민국헌법 제10조"], "expected_case_nos": []}
+{"question": "국가공무원법상 징계의 종류에 관한 규정", "category": "행정법", "difficulty": "중", "tool": "search_law", "expected_articles": ["국가공무원법 제79조"], "expected_case_nos": []}
+{"question": "국가공무원법상 징계 사유에 관한 규정을 알려줘", "category": "행정법", "difficulty": "중", "tool": "search_law", "expected_articles": ["국가공무원법 제78조"], "expected_case_nos": []}
+{"question": "지방자치법상 주민의 권리에 관한 규정", "category": "행정법", "difficulty": "중", "tool": "search_law", "expected_articles": ["지방자치법 제17조"], "expected_case_nos": []}
+{"question": "지방자치법상 조례 제정에 관한 규정", "category": "행정법", "difficulty": "중", "tool": "search_law", "expected_articles": ["지방자치법 제28조"], "expected_case_nos": []}
+{"question": "헌법재판소법상 위헌법률심판 제청에 관한 규정", "category": "헌법", "difficulty": "상", "tool": "search_law", "expected_articles": ["헌법재판소법 제41조"], "expected_case_nos": []}
+{"question": "헌법재판소법상 헌법소원 청구 사유에 관한 규정", "category": "헌법", "difficulty": "상", "tool": "search_law", "expected_articles": ["헌법재판소법 제68조"], "expected_case_nos": []}
+{"question": "행정기본법상 제재처분의 기준에 관한 규정", "category": "행정법", "difficulty": "중", "tool": "search_law", "expected_articles": ["행정기본법 제22조"], "expected_case_nos": []}
+{"question": "행정기본법상 제재처분의 제척기간에 관한 규정", "category": "행정법", "difficulty": "상", "tool": "search_law", "expected_articles": ["행정기본법 제23조"], "expected_case_nos": []}
+{"question": "행정절차법 제21조 알려줘", "category": "행정법", "difficulty": "하", "tool": "fetch_article_by_number", "expected_articles": ["행정절차법 제21조"], "expected_case_nos": []}
+{"question": "행정절차법 제23조 원문을 보여줘", "category": "행정법", "difficulty": "하", "tool": "fetch_article_by_number", "expected_articles": ["행정절차법 제23조"], "expected_case_nos": []}
+{"question": "행정심판법 제5조 전문", "category": "행정법", "difficulty": "하", "tool": "fetch_article_by_number", "expected_articles": ["행정심판법 제5조"], "expected_case_nos": []}
+{"question": "행정심판법 제43조를 보여줘", "category": "행정법", "difficulty": "하", "tool": "fetch_article_by_number", "expected_articles": ["행정심판법 제43조"], "expected_case_nos": []}
+{"question": "행정심판법 제49조 원문", "category": "행정법", "difficulty": "하", "tool": "fetch_article_by_number", "expected_articles": ["행정심판법 제49조"], "expected_case_nos": []}
+{"question": "대한민국헌법 제37조를 알려줘", "category": "헌법", "difficulty": "하", "tool": "fetch_article_by_number", "expected_articles": ["대한민국헌법 제37조"], "expected_case_nos": []}
+{"question": "대한민국헌법 제10조 전문", "category": "헌법", "difficulty": "하", "tool": "fetch_article_by_number", "expected_articles": ["대한민국헌법 제10조"], "expected_case_nos": []}
+{"question": "대한민국헌법 제111조를 보여줘", "category": "헌법", "difficulty": "하", "tool": "fetch_article_by_number", "expected_articles": ["대한민국헌법 제111조"], "expected_case_nos": []}
+{"question": "국가공무원법 제79조를 보여줘", "category": "행정법", "difficulty": "하", "tool": "fetch_article_by_number", "expected_articles": ["국가공무원법 제79조"], "expected_case_nos": []}
+{"question": "헌법재판소법 제41조 전문", "category": "헌법", "difficulty": "하", "tool": "fetch_article_by_number", "expected_articles": ["헌법재판소법 제41조"], "expected_case_nos": []}
+{"question": "행정기본법 제22조를 알려줘", "category": "행정법", "difficulty": "하", "tool": "fetch_article_by_number", "expected_articles": ["행정기본법 제22조"], "expected_case_nos": []}
+{"question": "지방자치법 제28조 원문", "category": "행정법", "difficulty": "하", "tool": "fetch_article_by_number", "expected_articles": ["지방자치법 제28조"], "expected_case_nos": []}
+{"question": "신뢰보호 원칙에 관한 대법원 판례", "category": "행정법", "difficulty": "중", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": ["98두4061"]}
+{"question": "재량행위와 기속행위의 구별 기준에 관한 판례", "category": "행정법", "difficulty": "중", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": ["97누15418"]}
+{"question": "행정대집행 계고처분 취소에 관한 판례를 찾아줘", "category": "행정법", "difficulty": "중", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": ["93누14271"]}
+{"question": "부작위위법확인에 관한 대법원 판례", "category": "행정법", "difficulty": "중", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": ["2000두4750"]}
+{"question": "국가배상 공무원 개인책임에 관한 대법원 판례를 검색해줘", "category": "행정법", "difficulty": "중", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": ["95다38677"]}
+{"question": "처분성 인정 여부에 관한 대법원 판례", "category": "행정법", "difficulty": "중", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": ["2019다264700"]}
+{"question": "거부처분 취소 후 재처분 의무에 관한 판례", "category": "행정법", "difficulty": "상", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": ["98두1895"]}
+{"question": "재량권 일탈 남용 사법심사 기준에 관한 판례", "category": "행정법", "difficulty": "중", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": ["98두17593"]}
+{"question": "행정처분의 원고적격 법률상 이익에 관한 판례", "category": "행정법", "difficulty": "중", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": ["2009두2825"]}
+{"question": "과징금 부과처분 취소에 관한 판례", "category": "행정법", "difficulty": "중", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": ["2007두20638"]}
+{"question": "손실보상 관련 판례를 알려줘", "category": "행정법", "difficulty": "중", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": ["2010다9658"]}
+{"question": "의료기관 업무정지 처분 취소에 관한 판례", "category": "행정법", "difficulty": "중", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": ["2005구합31153"]}
+{"question": "행정행위의 하자 무효와 취소 구별에 관한 판례", "category": "행정법", "difficulty": "상", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": ["2003두5426"]}
+{"question": "행정계획 재량에 관한 대법원 판례", "category": "행정법", "difficulty": "상", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": ["2002두12618"]}
+{"question": "사정판결에 관한 대법원 판례", "category": "행정법", "difficulty": "상", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": ["96누16698"]}
+{"question": "행정행위의 부관 철회에 관한 판례", "category": "행정법", "difficulty": "상", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": ["2009두8359"]}
+{"question": "건축허가 취소 관련 청문 절차 판례", "category": "행정법", "difficulty": "상", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": ["2022두45623"]}
+{"question": "과잉금지원칙에 관한 헌법재판소 결정례", "category": "헌법", "difficulty": "중", "tool": "search_constitutional_decision", "expected_articles": [], "expected_case_nos": ["2007헌가22"]}
+{"question": "직업의 자유 제한에 관한 헌재 결정", "category": "헌법", "difficulty": "중", "tool": "search_constitutional_decision", "expected_articles": [], "expected_case_nos": ["2002헌바52"]}
+{"question": "재산권 침해에 관한 헌법재판소 결정례를 검색해줘", "category": "헌법", "difficulty": "중", "tool": "search_constitutional_decision", "expected_articles": [], "expected_case_nos": ["89헌마214"]}
+{"question": "명확성의 원칙에 관한 헌재 결정", "category": "헌법", "difficulty": "상", "tool": "search_constitutional_decision", "expected_articles": [], "expected_case_nos": ["2007헌바72"]}
+{"question": "포괄위임금지 원칙에 관한 헌법재판소 결정", "category": "헌법", "difficulty": "상", "tool": "search_constitutional_decision", "expected_articles": [], "expected_case_nos": ["2009헌바107"]}
+{"question": "적법절차 원칙에 관한 헌재 결정례", "category": "헌법", "difficulty": "상", "tool": "search_constitutional_decision", "expected_articles": [], "expected_case_nos": ["2002헌가1"]}
+{"question": "평등권 침해에 관한 헌법재판소 결정례", "category": "헌법", "difficulty": "중", "tool": "search_constitutional_decision", "expected_articles": [], "expected_case_nos": ["2014헌마818"]}
+{"question": "인간의 존엄과 가치에 관한 헌재 결정", "category": "헌법", "difficulty": "중", "tool": "search_constitutional_decision", "expected_articles": [], "expected_case_nos": ["2009헌마617"]}
+{"question": "양심의 자유 제한에 관한 헌법재판소 결정", "category": "헌법", "difficulty": "상", "tool": "search_constitutional_decision", "expected_articles": [], "expected_case_nos": ["2017헌바42"]}
+{"question": "법률유보원칙에 관한 헌재 결정례", "category": "헌법", "difficulty": "상", "tool": "search_constitutional_decision", "expected_articles": [], "expected_case_nos": ["2007헌가12"]}
+{"question": "위헌법률심판 재판의 전제성에 관한 헌재 결정", "category": "헌법", "difficulty": "상", "tool": "search_constitutional_decision", "expected_articles": [], "expected_case_nos": ["2019헌바183"]}
+{"question": "헌법불합치 결정에 관한 헌재 결정례", "category": "헌법", "difficulty": "상", "tool": "search_constitutional_decision", "expected_articles": [], "expected_case_nos": ["2007헌마910"]}
+{"question": "표현의 자유 제한에 관한 헌법재판소 결정", "category": "헌법", "difficulty": "중", "tool": "search_constitutional_decision", "expected_articles": [], "expected_case_nos": ["2009헌바183"]}
+{"question": "헌법소원 보충성 원칙에 관한 헌재 결정례", "category": "헌법", "difficulty": "상", "tool": "search_constitutional_decision", "expected_articles": [], "expected_case_nos": ["2002헌가1"]}
+{"question": "산지전용허가에 관한 법제처 해석례", "category": "행정법", "difficulty": "상", "tool": "search_legal_interpretation", "expected_articles": [], "expected_case_nos": []}
+{"question": "행정절차법 관련 유권해석 사례를 검색해줘", "category": "행정법", "difficulty": "상", "tool": "search_legal_interpretation", "expected_articles": [], "expected_case_nos": []}
+{"question": "국유재산법에 관한 법제처 유권해석", "category": "행정법", "difficulty": "상", "tool": "search_legal_interpretation", "expected_articles": [], "expected_case_nos": []}
+{"question": "청문 실시 여부에 관한 법제처 해석", "category": "행정법", "difficulty": "상", "tool": "search_legal_interpretation", "expected_articles": [], "expected_case_nos": []}
+{"question": "행정심판 청구기간 산정에 관한 유권해석", "category": "행정법", "difficulty": "상", "tool": "search_legal_interpretation", "expected_articles": [], "expected_case_nos": []}
+{"question": "공무원 겸직에 관한 법제처 해석례", "category": "행정법", "difficulty": "상", "tool": "search_legal_interpretation", "expected_articles": [], "expected_case_nos": []}
+{"question": "건축허가 관련 법제처 유권해석 사례", "category": "행정법", "difficulty": "상", "tool": "search_legal_interpretation", "expected_articles": [], "expected_case_nos": []}
+{"question": "인허가 의제에 관한 법제처 해석", "category": "행정법", "difficulty": "상", "tool": "search_legal_interpretation", "expected_articles": [], "expected_case_nos": []}
+{"question": "98두4061 판결 내용을 보여줘", "category": "행정법", "difficulty": "하", "tool": "fetch_case_by_number", "expected_articles": [], "expected_case_nos": ["98두4061"]}
+{"question": "93누14271 판례 찾아줘", "category": "행정법", "difficulty": "하", "tool": "fetch_case_by_number", "expected_articles": [], "expected_case_nos": ["93누14271"]}
+{"question": "95다38677 판결 전문을 보여줘", "category": "행정법", "difficulty": "하", "tool": "fetch_case_by_number", "expected_articles": [], "expected_case_nos": ["95다38677"]}
+{"question": "97누15418 판결 내용", "category": "행정법", "difficulty": "하", "tool": "fetch_case_by_number", "expected_articles": [], "expected_case_nos": ["97누15418"]}
+{"question": "2000두4750 판례 찾아줘", "category": "행정법", "difficulty": "하", "tool": "fetch_case_by_number", "expected_articles": [], "expected_case_nos": ["2000두4750"]}
+{"question": "89헌마214 결정례 내용", "category": "헌법", "difficulty": "하", "tool": "fetch_case_by_number", "expected_articles": [], "expected_case_nos": ["89헌마214"]}
+{"question": "2017헌바42 결정 전문을 보여줘", "category": "헌법", "difficulty": "하", "tool": "fetch_case_by_number", "expected_articles": [], "expected_case_nos": ["2017헌바42"]}
+{"question": "98두1895 판결 내용을 보여줘", "category": "행정법", "difficulty": "하", "tool": "fetch_case_by_number", "expected_articles": [], "expected_case_nos": ["98두1895"]}
+{"question": "행정절차법상 공청회에 관한 규정", "category": "행정법", "difficulty": "중", "tool": "search_law", "expected_articles": ["행정절차법 제38조"], "expected_case_nos": []}
+{"question": "행정심판법상 피청구인 경정에 관한 규정", "category": "행정법", "difficulty": "상", "tool": "search_law", "expected_articles": ["행정심판법 제17조"], "expected_case_nos": []}
+{"question": "헌법상 영장주의에 관한 규정", "category": "헌법", "difficulty": "중", "tool": "search_law", "expected_articles": ["대한민국헌법 제12조"], "expected_case_nos": []}
+{"question": "당사자소송에 관한 대법원 판례", "category": "행정법", "difficulty": "상", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": ["2003다6422"]}
+{"question": "공법상 부당이득반환에 관한 판례", "category": "행정법", "difficulty": "상", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": ["2016두46670"]}
+{"question": "행정행위 직권취소에 관한 판례", "category": "행정법", "difficulty": "중", "tool": "search_precedent", "expected_articles": [], "expected_case_nos": ["2002두5474"]}
