@@ -48,6 +48,7 @@ logs/
 # Documentation (auto-generated)
 docs/HOW_IT_WORKS.md
 docs/CODE_DEEP_DIVE.md
+docs/code_explained/
 
 # OS
 .DS_Store

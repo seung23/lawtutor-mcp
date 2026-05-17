@@ -1,0 +1,847 @@
+{
+  "timestamp": "2026-05-17T18:19:29.515721",
+  "eval_set": "data\\eval\\eval_set_v2.jsonl",
+  "top_k": 5,
+  "aggregate": {
+    "recall_at_k": 0.6833,
+    "mrr": 0.5872,
+    "metadata_integrity": 1.0,
+    "total_items": 60
+  },
+  "details": [
+    {
+      "question": "행정절차법상 처분의 사전통지에 대해 알려줘",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "하",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정절차법 제21조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정절차법에서 처분의 이유를 제시해야 하는 규정은?",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "하",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정절차법 제23조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정절차법상 의견제출에 대한 규정",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "하",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 0.5,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정절차법 제27조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정절차법상 청문 주재자에 관한 규정",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 0.5,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정절차법 제28조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정절차법상 송달의 규정을 알려줘",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정절차법 제14조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정절차법에서 처분의 신청 절차는?",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정절차법 제17조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정절차법에서 의견청취의 방법에는 무엇이 있는지",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정절차법 제22조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정절차법상 행정지도의 원칙에 대해 알려줘",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 0.5,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정절차법 제48조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정절차법상 신의성실 및 신뢰보호 원칙 규정",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정절차법 제4조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정절차법의 적용 범위는 어떻게 되나요?",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정절차법 제3조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정절차법상 처분의 방식에 관한 규정",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정절차법 제24조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정절차법상 행정상 입법예고에 대해 알려줘",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "상",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정절차법 제41조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정심판의 종류에는 무엇이 있나요?",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "하",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정심판법 제5조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정심판법상 재결의 종류에 대해 설명해줘",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 0.0,
+      "rr": 0.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정심판법 제43조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정심판법상 사정재결이란 무엇인가요?",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "상",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 0.2,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정심판법 제44조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정심판법상 집행정지에 관한 규정",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 0.3333333333333333,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정심판법 제30조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정심판법상 임시처분 규정을 알려줘",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "상",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정심판법 제31조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정심판법상 재결의 기속력에 관한 규정",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "상",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 0.5,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정심판법 제49조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정심판법상 청구인 적격에 대해 알려줘",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 0.5,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정심판법 제13조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정심판 청구의 기간은 어떻게 되나요?",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정심판법 제27조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정심판의 고지 의무에 대한 규정",
+      "tool": "search_law",
+      "category": "행정법",
+      "difficulty": "상",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정심판법 제58조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "헌법상 국민의 기본권 제한 요건은?",
+      "tool": "search_law",
+      "category": "헌법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 0.5,
+      "integrity": 1.0,
+      "expected_articles": [
+        "대한민국헌법 제37조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "헌법상 직업의 자유에 관한 규정",
+      "tool": "search_law",
+      "category": "헌법",
+      "difficulty": "하",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "대한민국헌법 제15조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "헌법상 재산권 보장에 관한 규정은?",
+      "tool": "search_law",
+      "category": "헌법",
+      "difficulty": "하",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "대한민국헌법 제23조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "헌법상 신체의 자유에 대한 규정",
+      "tool": "search_law",
+      "category": "헌법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "대한민국헌법 제12조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "헌법상 평등의 원칙에 관한 규정",
+      "tool": "search_law",
+      "category": "헌법",
+      "difficulty": "하",
+      "num_results": 5,
+      "recall": 0.0,
+      "rr": 0.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "대한민국헌법 제11조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "헌법상 국가배상청구권에 관한 규정은?",
+      "tool": "search_law",
+      "category": "헌법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 0.0,
+      "rr": 0.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "대한민국헌법 제29조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "헌법재판소의 권한에 대해 알려줘",
+      "tool": "search_law",
+      "category": "헌법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 0.2,
+      "integrity": 1.0,
+      "expected_articles": [
+        "대한민국헌법 제111조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "헌법상 인간의 존엄과 가치에 관한 규정",
+      "tool": "search_law",
+      "category": "헌법",
+      "difficulty": "하",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "대한민국헌법 제10조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정절차법 제21조 알려줘",
+      "tool": "fetch_article_by_number",
+      "category": "행정법",
+      "difficulty": "하",
+      "num_results": 2,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정절차법 제21조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정절차법 제23조 원문을 보여줘",
+      "tool": "fetch_article_by_number",
+      "category": "행정법",
+      "difficulty": "하",
+      "num_results": 1,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정절차법 제23조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정심판법 제5조 전문",
+      "tool": "fetch_article_by_number",
+      "category": "행정법",
+      "difficulty": "하",
+      "num_results": 1,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정심판법 제5조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정심판법 제43조를 보여줘",
+      "tool": "fetch_article_by_number",
+      "category": "행정법",
+      "difficulty": "하",
+      "num_results": 2,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정심판법 제43조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정심판법 제49조 원문",
+      "tool": "fetch_article_by_number",
+      "category": "행정법",
+      "difficulty": "하",
+      "num_results": 1,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "행정심판법 제49조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "대한민국헌법 제37조를 알려줘",
+      "tool": "fetch_article_by_number",
+      "category": "헌법",
+      "difficulty": "하",
+      "num_results": 1,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "대한민국헌법 제37조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "대한민국헌법 제10조 전문",
+      "tool": "fetch_article_by_number",
+      "category": "헌법",
+      "difficulty": "하",
+      "num_results": 1,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "대한민국헌법 제10조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "대한민국헌법 제111조를 보여줘",
+      "tool": "fetch_article_by_number",
+      "category": "헌법",
+      "difficulty": "하",
+      "num_results": 1,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [
+        "대한민국헌법 제111조"
+      ],
+      "expected_case_nos": []
+    },
+    {
+      "question": "신뢰보호 원칙에 관한 대법원 판례",
+      "tool": "search_precedent",
+      "category": "행정법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 0.0,
+      "rr": 0.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": [
+        "83누453"
+      ]
+    },
+    {
+      "question": "과징금 부과처분 취소에 관한 판례",
+      "tool": "search_precedent",
+      "category": "행정법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 0.0,
+      "rr": 0.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": [
+        "89누3878"
+      ]
+    },
+    {
+      "question": "행정대집행 계고처분 취소에 관한 판례를 찾아줘",
+      "tool": "search_precedent",
+      "category": "행정법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 0.0,
+      "rr": 0.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": [
+        "83누386"
+      ]
+    },
+    {
+      "question": "부작위위법확인에 관한 대법원 판례",
+      "tool": "search_precedent",
+      "category": "행정법",
+      "difficulty": "상",
+      "num_results": 5,
+      "recall": 0.0,
+      "rr": 0.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": [
+        "87누469"
+      ]
+    },
+    {
+      "question": "국가배상 관련 대법원 판례를 검색해줘",
+      "tool": "search_precedent",
+      "category": "행정법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 0.0,
+      "rr": 0.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": [
+        "87다카1163"
+      ]
+    },
+    {
+      "question": "손실보상 관련 판례를 알려줘",
+      "tool": "search_precedent",
+      "category": "행정법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 0.0,
+      "rr": 0.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": [
+        "85누280"
+      ]
+    },
+    {
+      "question": "의료기관 업무정지 처분 취소에 관한 판례",
+      "tool": "search_precedent",
+      "category": "행정법",
+      "difficulty": "상",
+      "num_results": 5,
+      "recall": 0.0,
+      "rr": 0.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": [
+        "84누695"
+      ]
+    },
+    {
+      "question": "건축허가 취소 관련 청문 절차 판례",
+      "tool": "search_precedent",
+      "category": "행정법",
+      "difficulty": "상",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 0.5,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": [
+        "89누5607"
+      ]
+    },
+    {
+      "question": "과잉금지원칙에 관한 헌법재판소 결정례",
+      "tool": "search_constitutional_decision",
+      "category": "헌법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 0.0,
+      "rr": 0.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": [
+        "93헌바44"
+      ]
+    },
+    {
+      "question": "직업의 자유 제한에 관한 헌재 결정",
+      "tool": "search_constitutional_decision",
+      "category": "헌법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 0.0,
+      "rr": 0.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": [
+        "2005헌가1"
+      ]
+    },
+    {
+      "question": "재산권 침해에 관한 헌법재판소 결정례를 검색해줘",
+      "tool": "search_constitutional_decision",
+      "category": "헌법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 0.0,
+      "rr": 0.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": [
+        "91헌마50"
+      ]
+    },
+    {
+      "question": "명확성의 원칙에 관한 헌재 결정",
+      "tool": "search_constitutional_decision",
+      "category": "헌법",
+      "difficulty": "상",
+      "num_results": 5,
+      "recall": 0.0,
+      "rr": 0.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": [
+        "97헌마146"
+      ]
+    },
+    {
+      "question": "포괄위임금지 원칙에 관한 헌법재판소 결정",
+      "tool": "search_constitutional_decision",
+      "category": "헌법",
+      "difficulty": "상",
+      "num_results": 5,
+      "recall": 0.0,
+      "rr": 0.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": [
+        "2006헌바6"
+      ]
+    },
+    {
+      "question": "적법절차 원칙에 관한 헌재 결정례",
+      "tool": "search_constitutional_decision",
+      "category": "헌법",
+      "difficulty": "상",
+      "num_results": 5,
+      "recall": 0.0,
+      "rr": 0.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": [
+        "89헌가6"
+      ]
+    },
+    {
+      "question": "평등권 침해에 관한 헌법재판소 결정례",
+      "tool": "search_constitutional_decision",
+      "category": "헌법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 0.0,
+      "rr": 0.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": [
+        "92헌마32"
+      ]
+    },
+    {
+      "question": "인간의 존엄과 가치에 관한 헌재 결정",
+      "tool": "search_constitutional_decision",
+      "category": "헌법",
+      "difficulty": "중",
+      "num_results": 5,
+      "recall": 0.0,
+      "rr": 0.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": [
+        "2003헌가5"
+      ]
+    },
+    {
+      "question": "산지전용허가에 관한 법제처 해석례",
+      "tool": "search_legal_interpretation",
+      "category": "행정법",
+      "difficulty": "상",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": []
+    },
+    {
+      "question": "행정절차법 관련 유권해석 사례를 검색해줘",
+      "tool": "search_legal_interpretation",
+      "category": "행정법",
+      "difficulty": "상",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": []
+    },
+    {
+      "question": "국유재산법에 관한 법제처 유권해석",
+      "tool": "search_legal_interpretation",
+      "category": "행정법",
+      "difficulty": "상",
+      "num_results": 5,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": []
+    },
+    {
+      "question": "84누647 판결 내용을 보여줘",
+      "tool": "fetch_case_by_number",
+      "category": "행정법",
+      "difficulty": "하",
+      "num_results": 0,
+      "recall": 0.0,
+      "rr": 0.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": [
+        "84누647"
+      ]
+    },
+    {
+      "question": "87누469 판례 찾아줘",
+      "tool": "fetch_case_by_number",
+      "category": "행정법",
+      "difficulty": "하",
+      "num_results": 3,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": [
+        "87누469"
+      ]
+    },
+    {
+      "question": "2004헌마275 결정례 내용",
+      "tool": "fetch_case_by_number",
+      "category": "헌법",
+      "difficulty": "하",
+      "num_results": 2,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": [
+        "2004헌마275"
+      ]
+    },
+    {
+      "question": "93헌바44 결정 전문을 보여줘",
+      "tool": "fetch_case_by_number",
+      "category": "헌법",
+      "difficulty": "하",
+      "num_results": 6,
+      "recall": 1.0,
+      "rr": 1.0,
+      "integrity": 1.0,
+      "expected_articles": [],
+      "expected_case_nos": [
+        "93헌바44"
+      ]
+    }
+  ]
+}
