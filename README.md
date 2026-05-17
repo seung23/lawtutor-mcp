@@ -25,17 +25,26 @@
 
 ## 검색 품질
 
-10건 평가셋 기준 (top_k=5):
+60건 평가셋 기준 (top_k=5). 평가 방법론은 [docs/EVALUATION.md](docs/EVALUATION.md) 참조.
 
 | 메트릭 | 수치 | 목표 |
 |--------|------|------|
-| Recall@5 | **0.90** | 0.80 |
-| MRR | **0.78** | - |
+| Recall@5 | **0.94** | 0.80 |
+| MRR | **0.85** | - |
 | 메타데이터 무결성 | **1.00** | - |
+
+| 도구 | n | Recall@5 | MRR |
+|------|---|----------|-----|
+| 법령 의미 검색 | 29 | 0.90 | 0.72 |
+| 법령 정확 조회 | 8 | 1.00 | 1.00 |
+| 판례 의미 검색 | 8 | 0.96 | 0.94 |
+| 헌재결정 의미 검색 | 8 | 1.00 | 0.94 |
+| 해석례 검색 | 3 | 1.00 | 1.00 |
+| 사건번호 조회 | 4 | 1.00 | 1.00 |
 
 ```bash
 # 평가 실행
-uv run python scripts/run_eval.py
+uv run python scripts/run_eval.py --eval-set data/eval/eval_set_v2.jsonl
 ```
 
 ## 아키텍처
@@ -150,6 +159,7 @@ src/lawtutor/
 - [Architecture](docs/ARCHITECTURE.md) - 시스템 아키텍처
 - [Milestones](docs/MILESTONES.md) - 단계별 작업 계획
 - [Deployment](docs/DEPLOYMENT.md) - 배포 가이드
+- [Evaluation](docs/EVALUATION.md) - 검색 품질 평가 보고서
 
 ## License
 
