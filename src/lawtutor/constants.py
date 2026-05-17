@@ -136,6 +136,23 @@ RERANK_TITLE_BOOST_WEIGHT = 0.5
 RERANK_NGRAM_MIN = 2
 RERANK_NGRAM_MAX = 5
 
+# =============================================================================
+# 판례/결정례 검색 리랭킹 (중요도 부스트)
+# =============================================================================
+
+# 피인용수 부스트 가중치 (log 정규화된 0~1 값에 곱함)
+RERANK_CITATION_BOOST_WEIGHT = 0.15
+
+# 전원합의체/전원재판부 부스트 가중치
+RERANK_FULL_COURT_BOOST_WEIGHT = 0.10
+
+# 섹션 타입 부스트: 판시사항(holding) > 판결요지(summary) > 판례내용(reasoning)
+RERANK_SECTION_HOLDING_BOOST = 0.10
+RERANK_SECTION_SUMMARY_BOOST = 0.05
+
+# 중요도 데이터 경로
+CASE_IMPORTANCE_PATH = "data/case_importance.json"
+
 # 법률 용어 동의어 매핑
 # key: 사용자가 사용할 법한 표현, value: 조문 제목에 나타나는 공식 표현 리스트
 LEGAL_SYNONYMS: dict[str, list[str]] = {

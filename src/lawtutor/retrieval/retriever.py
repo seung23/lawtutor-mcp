@@ -2,7 +2,14 @@
 
 쿼리 → 임베딩 → Qdrant 검색 → 결과 반환 파이프라인.
 법령 검색은 N-gram 타이틀 부스트 리랭킹을 적용한다.
+판례/결정례 검색은 피인용수·전원합의체·섹션타입 부스트 리랭킹을 적용한다.
 """
+
+from __future__ import annotations
+
+import json
+import math
+from pathlib import Path
 
 import structlog
 
@@ -17,12 +24,61 @@ from lawtutor.constants import (
     RERANK_TITLE_BOOST_WEIGHT,
     RERANK_NGRAM_MIN,
     RERANK_NGRAM_MAX,
+    RERANK_CITATION_BOOST_WEIGHT,
+    RERANK_FULL_COURT_BOOST_WEIGHT,
+    RERANK_SECTION_HOLDING_BOOST,
+    RERANK_SECTION_SUMMARY_BOOST,
+    CASE_IMPORTANCE_PATH,
     LEGAL_SYNONYMS,
 )
 from lawtutor.embeddings.bge_m3 import BgeM3Embedder
 from lawtutor.vector_store.client import VectorStore
 
 logger = structlog.get_logger()
+
+# ---------------------------------------------------------------------------
+# 판례/결정례 중요도 데이터 (lazy singleton)
+# ---------------------------------------------------------------------------
+_case_importance: dict | None = None
+
+
+def _load_case_importance() -> dict:
+    """case_importance.json을 로드한다 (lazy, 한 번만)."""
+    global _case_importance
+    if _case_importance is not None:
+        return _case_importance
+
+    path = Path(CASE_IMPORTANCE_PATH)
+    if not path.is_absolute():
+        # 프로젝트 루트 기준 상대 경로
+        path = Path(__file__).resolve().parent.parent.parent.parent / path
+
+    if path.exists():
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+        citation_counts = data.get("citation_counts", {})
+        full_court_set = set(data.get("full_court_cases", []))
+        max_citation = max(citation_counts.values()) if citation_counts else 1
+        _case_importance = {
+            "citation_counts": citation_counts,
+            "full_court_cases": full_court_set,
+            "max_citation": max_citation,
+        }
+        logger.info(
+            "case_importance_loaded",
+            cited_cases=len(citation_counts),
+            full_court=len(full_court_set),
+            max_citation=max_citation,
+        )
+    else:
+        logger.warning("case_importance_not_found", path=str(path))
+        _case_importance = {
+            "citation_counts": {},
+            "full_court_cases": set(),
+            "max_citation": 1,
+        }
+
+    return _case_importance
 
 
 def _extract_ngrams(text: str, n_min: int, n_max: int) -> set[str]:
@@ -101,6 +157,58 @@ def _title_boost_rerank(
         overlap = len(match_ngrams & title_ngrams)
         # match_ngrams 대비 매칭 비율로 부스트 (0~1 범위)
         boost = (overlap / len(match_ngrams)) * RERANK_TITLE_BOOST_WEIGHT
+        r["score"] = r.get("score", 0) + boost
+
+    results.sort(key=lambda r: r.get("score", 0), reverse=True)
+    return results[:top_k]
+
+
+def _case_importance_rerank(
+    results: list[dict],
+    top_k: int,
+) -> list[dict]:
+    """판례/결정례 검색 결과를 중요도 기반으로 리랭킹한다.
+
+    부스트 요소:
+    1. 피인용수: log(1 + count) / log(1 + max_count) * weight
+    2. 전원합의체/전원재판부: 고정 가산점
+    3. 섹션 타입: holding > summary > reasoning/full_text
+    """
+    if not results:
+        return results
+
+    importance = _load_case_importance()
+    citation_counts = importance["citation_counts"]
+    full_court_set = importance["full_court_cases"]
+    max_citation = importance["max_citation"]
+
+    # log(1 + max_count)를 미리 계산 (0으로 나누기 방지)
+    log_max = math.log(1 + max_citation) if max_citation > 0 else 1.0
+
+    for r in results:
+        payload = r.get("payload", {})
+        case_no = payload.get("case_no", "")
+        chunk_type = payload.get("chunk_type", "")
+
+        boost = 0.0
+
+        # 1) 피인용수 부스트
+        count = citation_counts.get(case_no, 0)
+        if count > 0:
+            normalized = math.log(1 + count) / log_max
+            boost += normalized * RERANK_CITATION_BOOST_WEIGHT
+
+        # 2) 전원합의체 부스트
+        if case_no in full_court_set:
+            boost += RERANK_FULL_COURT_BOOST_WEIGHT
+
+        # 3) 섹션 타입 부스트
+        if chunk_type == "holding":
+            boost += RERANK_SECTION_HOLDING_BOOST
+        elif chunk_type == "summary":
+            boost += RERANK_SECTION_SUMMARY_BOOST
+        # reasoning, full_text, interpretation → 부스트 없음
+
         r["score"] = r.get("score", 0) + boost
 
     results.sort(key=lambda r: r.get("score", 0), reverse=True)
@@ -249,6 +357,8 @@ class Retriever:
     ) -> list[dict]:
         """판례를 검색한다.
 
+        over-fetch 후 피인용수·전원합의체·섹션타입 부스트로 리랭킹한다.
+
         Args:
             query: 검색 쿼리
             top_k: 반환할 결과 수
@@ -261,12 +371,15 @@ class Retriever:
         if court_filter:
             filters["court"] = court_filter
 
-        results = self._hybrid_search(COLLECTION_PRECEDENTS, query, top_k, filters)
+        top_k = self._clamp_top_k(top_k)
+        overfetch_k = min(top_k * RERANK_OVERFETCH_MULTIPLIER, SEARCH_MAX_TOP_K)
+
+        results = self._hybrid_search(COLLECTION_PRECEDENTS, query, overfetch_k, filters)
         if not results:
             logger.info("db_miss_trying_api_fallback", query=query, collection="precedents")
             from lawtutor.retrieval.api_fallback import search_precedents_from_api
             return search_precedents_from_api(query, top_k)
-        return results
+        return _case_importance_rerank(results, top_k)
 
     def search_decisions(
         self,
@@ -275,6 +388,8 @@ class Retriever:
         case_type_filter: str | None = None,
     ) -> list[dict]:
         """헌재결정례를 검색한다.
+
+        over-fetch 후 피인용수·전원합의체·섹션타입 부스트로 리랭킹한다.
 
         Args:
             query: 검색 쿼리
@@ -288,12 +403,15 @@ class Retriever:
         if case_type_filter:
             filters["case_type"] = case_type_filter
 
-        results = self._hybrid_search(COLLECTION_DECISIONS, query, top_k, filters)
+        top_k = self._clamp_top_k(top_k)
+        overfetch_k = min(top_k * RERANK_OVERFETCH_MULTIPLIER, SEARCH_MAX_TOP_K)
+
+        results = self._hybrid_search(COLLECTION_DECISIONS, query, overfetch_k, filters)
         if not results:
             logger.info("db_miss_trying_api_fallback", query=query, collection="decisions")
             from lawtutor.retrieval.api_fallback import search_decisions_from_api
             return search_decisions_from_api(query, top_k)
-        return results
+        return _case_importance_rerank(results, top_k)
 
     def search_interpretations(
         self,
